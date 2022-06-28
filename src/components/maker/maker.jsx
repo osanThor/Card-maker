@@ -7,7 +7,7 @@ import Editor from "../editor/editor";
 import Preview from "../preview/preview";
 
 const Maker = ({ authService }) => {
-  const [cards, setrCards] = useState([
+  const [cards, setCards] = useState([
     {
       id: "1",
       name: "elie",
@@ -55,11 +55,17 @@ const Maker = ({ authService }) => {
     });
   });
 
+  const addCard = (card) => {
+    const update = [...cards, card];
+    setCards(update);
+    console.log(card);
+  };
+
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogOut} />
       <div className={styles.container}>
-        <Editor cards={cards} />
+        <Editor cards={cards} addCard={addCard} />
         <Preview cards={cards} />
       </div>
       <Footer />

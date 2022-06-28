@@ -18,12 +18,13 @@ const CardEditForm = ({ card }) => {
         value={company}
       />
       <input className={styles.input} type="text" name="title" value={title} />
+      <input className={styles.input} type="text" name="email" value={email} />
       <select className={styles.select} name="theme" value={theme}>
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="colorful">ColorFul</option>
       </select>
-      <textarea className={styles.textarea} name="name" value={message} />
+      <textarea className={styles.textarea} name="message" value={message} />
       <div className={styles.fileInput}>
         <ImageFileInput />
       </div>
