@@ -61,9 +61,9 @@ const CardAddForm = ({ onAdd }) => {
         name="theme"
         placeholder="Theme"
       >
-        <option placeholder="light">Light</option>
-        <option placeholder="dark">Dark</option>
-        <option placeholder="colorful">ColorFul</option>
+        <option placeholder="light">light</option>
+        <option placeholder="dark">dark</option>
+        <option placeholder="colorful">colorful</option>
       </select>
       <textarea
         ref={messageRef}
