@@ -4,14 +4,20 @@ import "./index.module.css";
 import App from "./app";
 import AuthService from "./service/auth_service";
 import { BrowserRouter } from "react-router-dom";
+import ImageUploader from "./service/image_upload";
+import ImageFileInput from "./components/image_file_input/image_file_input";
 
 const authService = new AuthService();
+const imageUploader = new ImageUploader();
+const FileInput = (props) => (
+  <ImageFileInput {...props} imageUploader={imageUploader} />
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App authService={authService} />
+      <App authService={authService} FileInput={FileInput} />
     </BrowserRouter>
   </React.StrictMode>
 );

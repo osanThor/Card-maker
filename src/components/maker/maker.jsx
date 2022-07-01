@@ -6,7 +6,7 @@ import Footer from "../footer/footer";
 import Editor from "../editor/editor";
 import Preview from "../preview/preview";
 
-const Maker = ({ authService }) => {
+const Maker = ({ FileInput, authService }) => {
   const [cards, setCards] = useState({
     1: {
       id: "1",
@@ -57,7 +57,6 @@ const Maker = ({ authService }) => {
   });
 
   const createOrUpdateCard = (card) => {
-    console.log(card.id);
     setCards((cards) => {
       const update = { ...cards };
       update[card.id] = card;
@@ -65,7 +64,6 @@ const Maker = ({ authService }) => {
     });
   };
   const deleteCard = (card) => {
-    console.log(card.id);
     setCards((cards) => {
       const update = { ...cards };
       delete update[card.id];
@@ -78,6 +76,7 @@ const Maker = ({ authService }) => {
       <Header onLogout={onLogOut} />
       <div className={styles.container}>
         <Editor
+          FileInput={FileInput}
           cards={cards}
           addCard={createOrUpdateCard}
           updateCard={createOrUpdateCard}
