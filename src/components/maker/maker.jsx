@@ -8,7 +8,6 @@ import Preview from "../preview/preview";
 
 const Maker = ({ FileInput, authService, cardRepository }) => {
   const location = useLocation();
-  console.log(location.state.id);
   const historyState = location.state;
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState && historyState.id);
@@ -26,7 +25,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
       setCards(cards);
     });
     return () => stopSync();
-  }, [userId]);
+  }, [userId, cardRepository]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -36,7 +35,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         navigate("/");
       }
     });
-  });
+  }, [authService, navigate]);
 
   const createOrUpdateCard = (card) => {
     setCards((cards) => {
