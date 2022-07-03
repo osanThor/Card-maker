@@ -16,12 +16,13 @@ const Login = ({ authService }) => {
   const onLogin = (e) => {
     authService //
       .login(e.currentTarget.textContent)
-      .then((data) => goToMaker(data.user.uid));
+      .then((data) => goToMaker(data.uid));
   };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      user && goToMaker(user.id);
+      console.log(user);
+      user && goToMaker(user.uid);
     });
   });
   return (
