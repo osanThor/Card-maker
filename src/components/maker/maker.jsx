@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./maker.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/header";
@@ -13,9 +13,9 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
   const [userId, setUserId] = useState(historyState && historyState.id);
 
   const navigate = useNavigate();
-  const onLogOut = () => {
+  const onLogOut = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
